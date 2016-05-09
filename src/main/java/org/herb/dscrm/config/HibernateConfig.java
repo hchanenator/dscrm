@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -19,6 +20,7 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 public class HibernateConfig {
 
 	private final String dialect = "org.hibernate.dialect.HSQLDialect";
+
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory(DataSource ds) {
@@ -35,5 +37,7 @@ public class HibernateConfig {
 
 		return sfb;
 	}
+	
+	
 
 }
