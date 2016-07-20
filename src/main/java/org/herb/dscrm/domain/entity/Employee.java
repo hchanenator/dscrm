@@ -38,6 +38,22 @@ public class Employee implements Serializable{
 	
 	@Column(name="alter_ego")
 	private String alias;
+	
+	public Employee() {
+		
+	}
+
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param alias
+	 */
+	public Employee(String firstName, String lastName, String alias) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.alias = alias;
+	}
 
 	public Long getEmployeeId() {
 		return employeeId;
