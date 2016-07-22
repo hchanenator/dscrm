@@ -3,7 +3,7 @@
  */
 package org.herb.dscrm;
 
-import org.herb.dscrm.domain.entity.Employee;
+import org.herb.dscrm.domain.entity.Hero;
 import org.herb.dscrm.system.util.HibernateUtil;
 import org.hibernate.Session;
 
@@ -20,17 +20,17 @@ public class SimpleHibernateTest {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		
 		session.beginTransaction();
-		Employee emp1 = new Employee();
+		Hero emp1 = new Hero();
 		emp1.setFirstName("Tony");
 		emp1.setLastName("Stark");
 		emp1.setAlias("Iron Man");
 		
-		Employee emp2 = new Employee();
+		Hero emp2 = new Hero();
 		emp2.setFirstName("Steve");
 		emp2.setLastName("Rogers");
 		emp2.setAlias("Captain America");
 		
-		Employee emp3 = new Employee();
+		Hero emp3 = new Hero();
 		emp3.setFirstName("Natasha");
 		emp3.setLastName("Romanoff");
 		emp3.setAlias("Black Widow");

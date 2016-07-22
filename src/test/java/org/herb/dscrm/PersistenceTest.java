@@ -11,8 +11,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.herb.dscrm.config.HibernateConfig;
-import org.herb.dscrm.domain.entity.Employee;
-import org.herb.dscrm.system.persistence.EmployeeRepository;
+import org.herb.dscrm.domain.entity.Hero;
+import org.herb.dscrm.system.persistence.api.HeroRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes={DSCRM.class})
 public class PersistenceTest {
 	
-	private final List<Employee> employees = new ArrayList<>();
+	private final List<Hero> heroes = new ArrayList<>();
 	
 	
 	@Autowired
@@ -37,7 +37,7 @@ public class PersistenceTest {
 	HibernateConfig hibernatConfig;
 	
 	@Autowired
-	EmployeeRepository employeeRepository;
+	HeroRepository heroRepository;
 	
 	@Test
 	public void testGetHibernateSession() {
@@ -46,28 +46,28 @@ public class PersistenceTest {
 	
 	@Test
 	public void testSaveEmployee() {
-		Employee employee = new Employee();
-		employee.setFirstName("Wade");
-		employee.setLastName("Wilson");
-		employee.setAlias("Deadpool");
+		Hero hero = new Hero();
+		hero.setFirstName("Wade");
+		hero.setLastName("Wilson");
+		hero.setAlias("Deadpool");
 		
-		employeeRepository.save(employee);
+		heroRepository.save(hero);
 		
 //		assertNotNull(employeeRepository.findAll());
-		assertNotNull(employeeRepository.findByLastName("Wilson"));
+		assertNotNull(heroRepository.findByLastName("Wilson"));
 	}
 	
 	@Test
 	public void testManyEmployees() {
 		
-		long count = employeeRepository.count();
+		long count = heroRepository.count();
 		System.out.printf("# of Employees: %d\n", count);
 		assertTrue(count > 0);
 	}
 	
 	@Test
-	public void testWhoIsIt() {
-		Employee hero = employeeRepository.findOne(1l);
+	public void testFindHeroByAlias() {
+		Hero hero = heroRepository.findByAlias("Deadpool");
 		assertEquals("Deadpool", hero.getAlias());
 	}
 	
@@ -75,27 +75,27 @@ public class PersistenceTest {
 	public void testFindAllEmployees() {
 		makeEmployees();
 		saveEmployees();
-		List<Employee> heroes = employeeRepository.findAll();
+		List<Hero> heroes = heroRepository.findAll();
 		assertNotNull(heroes);
-		for (Employee employee : heroes) {
+		for (Hero employee : heroes) {
 			System.out.println(employee.toString());
 		}
 	}
 	
 	private void makeEmployees() {
 		
-		employees.add(new Employee("Steve", "Rogers", "Captain America"));
-		employees.add(new Employee("Tony", "Stark", "Iron Man"));
-		employees.add(new Employee("Bruce", "Banner", "Hulk"));
-		employees.add(new Employee("Natasha", "Romanov", "Black Widow"));
-		employees.add(new Employee("Clark", "Kent", "Superman"));
-		employees.add(new Employee("Bruce", "Wayne", "Batman"));
+		heroes.add(new Hero("Steve", "Rogers", "Captain America"));
+		heroes.add(new Hero("Tony", "Stark", "Iron Man"));
+		heroes.add(new Hero("Bruce", "Banner", "Hulk"));
+		heroes.add(new Hero("Natasha", "Romanov", "Black Widow"));
+		heroes.add(new Hero("Clark", "Kent", "Superman"));
+		heroes.add(new Hero("Bruce", "Wayne", "Batman"));
 		
 	}
 	
 	private void saveEmployees() {
-		for (Employee employee : employees) {
-			employeeRepository.save(employee);
+		for (Hero employee : heroes) {
+			heroRepository.save(employee);
 		}
 	}
 

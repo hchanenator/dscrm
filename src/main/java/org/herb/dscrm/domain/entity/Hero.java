@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="employee")
-public class Employee implements Serializable{
+public class Hero implements Serializable{
 
 	/**
 	 * 
@@ -39,7 +39,7 @@ public class Employee implements Serializable{
 	@Column(name="alter_ego")
 	private String alias;
 	
-	public Employee() {
+	public Hero() {
 		
 	}
 
@@ -48,7 +48,7 @@ public class Employee implements Serializable{
 	 * @param lastName
 	 * @param alias
 	 */
-	public Employee(String firstName, String lastName, String alias) {
+	public Hero(String firstName, String lastName, String alias) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -106,7 +106,7 @@ public class Employee implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Employee other = (Employee) obj;
+		Hero other = (Hero) obj;
 		if (alias == null) {
 			if (other.alias != null)
 				return false;
