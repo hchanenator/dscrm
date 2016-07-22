@@ -73,8 +73,8 @@ public class PersistenceTest {
 	
 	@Test
 	public void testFindAllEmployees() {
-		makeEmployees();
-		saveEmployees();
+		makeHeroes();
+		saveHeroes();
 		List<Hero> heroes = heroRepository.findAll();
 		assertNotNull(heroes);
 		for (Hero employee : heroes) {
@@ -82,7 +82,7 @@ public class PersistenceTest {
 		}
 	}
 	
-	private void makeEmployees() {
+	private void makeHeroes() {
 		
 		heroes.add(new Hero("Steve", "Rogers", "Captain America"));
 		heroes.add(new Hero("Tony", "Stark", "Iron Man"));
@@ -93,9 +93,9 @@ public class PersistenceTest {
 		
 	}
 	
-	private void saveEmployees() {
-		for (Hero employee : heroes) {
-			heroRepository.save(employee);
+	private void saveHeroes() {
+		for (Hero hero : heroes) {
+			heroRepository.save(hero);
 		}
 	}
 

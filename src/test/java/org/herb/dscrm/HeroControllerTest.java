@@ -3,11 +3,12 @@
  */
 package org.herb.dscrm;
 
-import static org.mockito.Mockito.*;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,9 @@ import org.hamcrest.Matchers;
 import org.herb.dscrm.controller.HeroController;
 import org.herb.dscrm.domain.entity.Hero;
 import org.herb.dscrm.system.persistence.api.HeroRepository;
+import org.herb.dscrm.system.service.api.HeroService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -35,6 +36,9 @@ public class HeroControllerTest {
 
 	@Autowired
 	HeroController heroController;
+	
+	@Autowired
+	HeroRepository heroRepository;
 
 	@Test
 	public void testHeroPage() throws Exception {
@@ -42,21 +46,22 @@ public class HeroControllerTest {
 
 		mockMVC.perform(get("/showheroes")).andExpect(view().name("heroes"));
 	}
-
+	
 	@Test
 	public void testShowHeroesPage() throws Exception {
 		List<Hero> heroes = createHeroesList();
+		saveHeroesList(heroes);
 
-		HeroRepository mockRepository = mock(HeroRepository.class);
+		HeroService mockService = mock(HeroService.class);
 
-		when(mockRepository.findAll()).thenReturn(heroes);
+		when(mockService.findAllHeroes()).thenReturn(heroes);
 
 		MockMvc mockMvc = standaloneSetup(heroController)
-				.setSingleView(new InternalResourceView("/WEB-INF/view/Hero.jsp")).build();
+				.setSingleView(new InternalResourceView("/WEB-INF/view/hero.jsp")).build();
 
 		mockMvc.perform(get("/showheroes")).andExpect(view().name("heroes"))
-				.andExpect(model().attributeExists("heroeList"))
-				.andExpect(model().attribute("heroeList", Matchers.hasItems(heroes.toArray())));
+				.andExpect(model().attributeExists("heroesList"))
+				.andExpect(model().attribute("heroesList", Matchers.hasItems(heroes.toArray())));
 		
 	}
 
@@ -71,5 +76,11 @@ public class HeroControllerTest {
 		heroes.add(new Hero("Bruce", "Wayne", "Batman"));
 
 		return heroes;
+	}
+	
+	private void saveHeroesList(List<Hero> heroes) {
+		for (Hero hero : heroes) {
+			heroRepository.save(hero);
+		}
 	}
 }

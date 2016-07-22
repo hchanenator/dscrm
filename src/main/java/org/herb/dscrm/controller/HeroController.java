@@ -19,9 +19,14 @@ public class HeroController {
 	@Autowired
 	HeroService heroService;
 	
+	@RequestMapping("/")
+	public String welcome() {
+		return "welcome";
+	}
+	
 	@RequestMapping("/showheroes")
 	public String list(Model model) {
-		model.addAttribute("heroes", heroService.findAllHeroes());
+		model.addAttribute("heroesList", heroService.findAllHeroes());
 		return "heroes";
 	}
 
