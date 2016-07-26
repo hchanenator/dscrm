@@ -17,7 +17,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="employee")
+@Table(name="hero")
 public class Hero implements Serializable{
 
 	/**
@@ -26,7 +26,7 @@ public class Hero implements Serializable{
 	private static final long serialVersionUID = 3587786807705161664L;
 	
 	@Id
-	@Column(name="emp_id", unique=true, nullable=false)
+	@Column(name="hero_id", unique=true, nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long employeeId;
 

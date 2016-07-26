@@ -13,8 +13,8 @@
 	<section>
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Hello</h1>
-			<p>Herb Rocks!</p>
+			<h1>${greeting}</h1>
+			<p>${awesomeness}</p>
 		</div>
 	</div>
 	</section>

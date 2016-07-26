@@ -19,11 +19,6 @@ public class HeroController {
 	@Autowired
 	HeroService heroService;
 	
-	@RequestMapping("/")
-	public String welcome() {
-		return "welcome";
-	}
-	
 	@RequestMapping("/showheroes")
 	public String list(Model model) {
 		model.addAttribute("heroesList", heroService.findAllHeroes());
