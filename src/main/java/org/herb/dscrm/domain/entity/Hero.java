@@ -26,7 +26,7 @@ public class Hero implements Serializable{
 	private static final long serialVersionUID = 3587786807705161664L;
 	
 	@Id
-	@Column(name="hero_id", unique=true)
+	@Column(name="hero_id", unique=true, nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long heroId;
 
@@ -55,11 +55,11 @@ public class Hero implements Serializable{
 		this.alias = alias;
 	}
 
-	public Long getEmployeeId() {
+	public Long getHeroId() {
 		return heroId;
 	}
 
-	public void setEmployeeId(Long employeeId) {
+	public void setHeroId(Long employeeId) {
 		this.heroId = employeeId;
 	}
 

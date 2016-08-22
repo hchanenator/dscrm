@@ -21,15 +21,16 @@
 	</section>
 
 	<section class="container">
-	<h3>Heroes</h3>
+	<h2>Heroes</h2>
 	<div class="row">
 		<c:forEach items="${heroesList}" var="hero">
 			<div class="col-am-6 col-md-3" style="padding-bottom: 15px">
 				<div class="thumbnail">
 					<div class="caption">
-						<h3>Hero ID: ${hero.customerId }</h3>
-						<p>First Name: ${hero.firstName }</p>
-						<p>Last Name: ${hero.lastName }</p>
+						<h3>Hero #: ${ hero.heroId }</h3>
+						<p>First Name: ${ hero.firstName }</p>
+						<p>Last Name: ${ hero.lastName }</p>
+						<p>Alias: ${ hero.alias }
 					</div>
 				</div>
 			</div>

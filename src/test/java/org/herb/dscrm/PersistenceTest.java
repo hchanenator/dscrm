@@ -48,19 +48,17 @@ public class PersistenceTest {
 //	@Test
 	public void testSaveEmployee() {
 		Hero hero = new Hero();
-		hero.setEmployeeId(10l);
+		
 		hero.setFirstName("Wade");
 		hero.setLastName("Wilson");
 		hero.setAlias("Deadpool");
-		
-		System.out.println(hero.toString());
-		
+				
 		heroRepository.save(hero);
 		
 		assertNotNull(heroRepository.findByLastName("Wilson"));
 	}
 	
-//	@Test
+	@Test
 	public void testManyEmployees() {
 		
 		long count = heroRepository.count();
