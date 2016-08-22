@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.herb.dscrm.config;
+package org.herb.dscrm.test;
 
 import java.util.Properties;
 
@@ -12,6 +12,7 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -24,27 +25,30 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
  */
 @Configuration
 @PropertySource("classpath:application.properties")
-public class HibernateConfig {
+@Profile("dev")
+public class TestHibernateConfig {
 
-//	private final String dialect = "org.hibernate.dialect.HSQLDialect";
+	private final String dialect = "org.hibernate.dialect.HSQLDialect";
 
 	@Resource
 	Environment env;
 	
 	@Autowired
-	DBConfig dbConfig;
-	
+	TestDBConfig dbConfig;
+
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+	public LocalSessionFactoryBean sessionFactory(DataSource ds) {
+		LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
+		sfb.setDataSource(ds);
+		sfb.setPackagesToScan(new String[] { env.getRequiredProperty("hibernate.packages_to_scan") });
+
+		Properties props = hibernateProperties();
 		
-		entityManagerFactoryBean.setDataSource(dbConfig.dataSource());
-		entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-		entityManagerFactoryBean.setPackagesToScan(env.getRequiredProperty("hibernate.packages_to_scan"));
-		
-		entityManagerFactoryBean.setJpaProperties(hibernateProperties());
-		
-		return entityManagerFactoryBean;
+		props.setProperty("hbm2ddl.auto", "create");
+
+		sfb.setHibernateProperties(props);
+
+		return sfb;
 	}
 	
 	private Properties hibernateProperties() {
@@ -56,13 +60,6 @@ public class HibernateConfig {
         
         return properties;
     }
- 
-    @Bean
-    public JpaTransactionManager transactionManager() {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-        return transactionManager;
-    }
-	
+
 
 }

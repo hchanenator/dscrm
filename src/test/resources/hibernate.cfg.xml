@@ -26,6 +26,7 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
+<!-- TEST DB -->
 <hibernate-configuration>
 
     <session-factory>
@@ -52,7 +53,7 @@
         <property name="hbm2ddl.auto">create</property>       
         
 
-		<mapping class="org.herb.dscrm.domain.entity.Employee"/>
+		<mapping class="org.herb.dscrm.domain.entity.Hero"/>
     </session-factory>
 
 </hibernate-configuration>
