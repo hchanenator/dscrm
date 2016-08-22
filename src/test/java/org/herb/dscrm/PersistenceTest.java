@@ -48,10 +48,12 @@ public class PersistenceTest {
 //	@Test
 	public void testSaveEmployee() {
 		Hero hero = new Hero();
-//		hero.setEmployeeId(10l);
+		hero.setEmployeeId(10l);
 		hero.setFirstName("Wade");
 		hero.setLastName("Wilson");
 		hero.setAlias("Deadpool");
+		
+		System.out.println(hero.toString());
 		
 		heroRepository.save(hero);
 		
@@ -68,8 +70,8 @@ public class PersistenceTest {
 	
 	@Test
 	public void testFindHeroByAlias() {
-		Hero hero = heroRepository.findByAlias("Batman");
-		assertEquals("Batman", hero.getAlias());
+		Hero hero = heroRepository.findByAlias("Spiderman");
+		assertEquals("Spiderman", hero.getAlias());
 	}
 	
 //	@Test
