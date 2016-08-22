@@ -25,7 +25,7 @@ public class TestDBConfig {
 		System.out.println("Setting up DataSource for DEV");
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
 		builder.setType(EmbeddedDatabaseType.HSQL);
-		builder.setName("testdb");
+		builder.setName("dscrmtest");
 		return builder.build();
 	}
 
