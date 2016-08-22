@@ -27,7 +27,6 @@ public class DBConfig {
 
 	@Bean
 	public DataSource dataSource() {
-		System.out.println("Setting up DataSource for PROD");
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
