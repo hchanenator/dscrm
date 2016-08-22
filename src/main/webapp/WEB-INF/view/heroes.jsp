@@ -21,6 +21,7 @@
 	</section>
 
 	<section class="container">
+	<h3>Heroes</h3>
 	<div class="row">
 		<c:forEach items="${heroesList}" var="hero">
 			<div class="col-am-6 col-md-3" style="padding-bottom: 15px">

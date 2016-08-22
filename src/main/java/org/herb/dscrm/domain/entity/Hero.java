@@ -17,7 +17,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="hero")
+@Table(name="HERO")
 public class Hero implements Serializable{
 
 	/**
@@ -26,9 +26,9 @@ public class Hero implements Serializable{
 	private static final long serialVersionUID = 3587786807705161664L;
 	
 	@Id
-	@Column(name="hero_id", unique=true, nullable=false)
+	@Column(name="hero_id", unique=true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long employeeId;
+	private Long heroId;
 
 	@Column(name="first_name")
 	private String firstName;
@@ -56,11 +56,11 @@ public class Hero implements Serializable{
 	}
 
 	public Long getEmployeeId() {
-		return employeeId;
+		return heroId;
 	}
 
 	public void setEmployeeId(Long employeeId) {
-		this.employeeId = employeeId;
+		this.heroId = employeeId;
 	}
 
 	public String getFirstName() {
@@ -92,7 +92,7 @@ public class Hero implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((alias == null) ? 0 : alias.hashCode());
-		result = prime * result + ((employeeId == null) ? 0 : employeeId.hashCode());
+		result = prime * result + ((heroId == null) ? 0 : heroId.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		return result;
@@ -112,10 +112,10 @@ public class Hero implements Serializable{
 				return false;
 		} else if (!alias.equals(other.alias))
 			return false;
-		if (employeeId == null) {
-			if (other.employeeId != null)
+		if (heroId == null) {
+			if (other.heroId != null)
 				return false;
-		} else if (!employeeId.equals(other.employeeId))
+		} else if (!heroId.equals(other.heroId))
 			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
@@ -132,7 +132,7 @@ public class Hero implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", alias="
+		return "Employee [employeeId=" + heroId + ", firstName=" + firstName + ", lastName=" + lastName + ", alias="
 				+ alias + "]";
 	}
 
