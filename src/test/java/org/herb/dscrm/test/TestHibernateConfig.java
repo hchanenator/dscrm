@@ -25,7 +25,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
  */
 @Configuration
 @Profile("dev")
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application-dev.properties")
 public class TestHibernateConfig {
 
 //	private final String dialect = "org.hibernate.dialect.HSQLDialect";

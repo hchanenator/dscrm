@@ -50,9 +50,9 @@ public class HibernateConfig {
 	private Properties hibernateProperties() {
         Properties properties = new Properties();
         
-        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-        properties.put("connection.pool_size", env.getProperty("hibernate.pool_size"));
+        properties.setProperty("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
+        properties.setProperty("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
+        properties.setProperty("connection.pool_size", env.getProperty("hibernate.pool_size"));
         
         return properties;
     }
