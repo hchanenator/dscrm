@@ -24,33 +24,29 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
  *
  */
 @Configuration
-@PropertySource("classpath:application.properties")
 @Profile("dev")
+@PropertySource("classpath:application.properties")
 public class TestHibernateConfig {
 
-	private final String dialect = "org.hibernate.dialect.HSQLDialect";
-
+//	private final String dialect = "org.hibernate.dialect.HSQLDialect";
 	@Resource
 	Environment env;
-	
-	@Autowired
-	TestDBConfig dbConfig;
+
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory(DataSource ds) {
-		LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
-		sfb.setDataSource(ds);
+		System.out.println("Setting up LocalSessionFactoryBean for DEV");
 		
-		sfb.setPackagesToScan(new String[] { "org.herb.dscrm.domain" });
+		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+		sessionFactoryBean.setDataSource(ds);
+		sessionFactoryBean.setPackagesToScan(new String[] { "org.herb.dscrm.domain" });
 
 		Properties props = hibernateProperties();
-//		props.setProperty("dialect", dialect);
-//		props.setProperty("show_sql", "true");
 		props.setProperty("hbm2ddl.auto", "create");
 
-		sfb.setHibernateProperties(props);
+		sessionFactoryBean.setHibernateProperties(props);
 
-		return sfb;
+		return sessionFactoryBean;
 	}
 	
 	private Properties hibernateProperties() {

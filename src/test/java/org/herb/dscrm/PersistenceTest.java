@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.herb.dscrm.config.HibernateConfig;
+import org.herb.dscrm.test.TestHibernateConfig;
 import org.herb.dscrm.domain.entity.Hero;
 import org.herb.dscrm.system.persistence.api.HeroRepository;
 import org.junit.Test;
@@ -36,18 +36,17 @@ public class PersistenceTest {
 	DataSource dataSource;
 	
 	@Autowired
-	HibernateConfig hibernateConfig;
+	TestHibernateConfig hibernateConfig;
 	
 	@Autowired
 	HeroRepository heroRepository;
 	
 	@Test
 	public void testGetHibernateSession() {
-//		assertNotNull(hibernateConfig.sessionFactory(dataSource));
-		assertNotNull(hibernateConfig.entityManagerFactory());
+		assertNotNull(hibernateConfig.sessionFactory(dataSource));
 	}
 	
-//	@Test
+	@Test
 	public void testSaveEmployee() {
 		Hero hero = new Hero();
 		
