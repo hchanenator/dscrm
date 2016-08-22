@@ -40,10 +40,12 @@ public class TestHibernateConfig {
 	public LocalSessionFactoryBean sessionFactory(DataSource ds) {
 		LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
 		sfb.setDataSource(ds);
-		sfb.setPackagesToScan(new String[] { env.getRequiredProperty("hibernate.packages_to_scan") });
+		
+		sfb.setPackagesToScan(new String[] { "org.herb.dscrm.domain" });
 
 		Properties props = hibernateProperties();
-		
+//		props.setProperty("dialect", dialect);
+//		props.setProperty("show_sql", "true");
 		props.setProperty("hbm2ddl.auto", "create");
 
 		sfb.setHibernateProperties(props);
@@ -54,9 +56,9 @@ public class TestHibernateConfig {
 	private Properties hibernateProperties() {
         Properties properties = new Properties();
         
-        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
-        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-        properties.put("connection.pool_size", env.getProperty("hibernate.pool_size"));
+        properties.setProperty("dialect", env.getRequiredProperty("hibernate.dialect"));
+        properties.setProperty("show_sql", env.getRequiredProperty("hibernate.show_sql"));
+        properties.setProperty("pool_size", env.getProperty("hibernate.pool_size"));
         
         return properties;
     }
