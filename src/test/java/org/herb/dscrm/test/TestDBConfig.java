@@ -17,7 +17,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
  *
  */
 @Configuration
-@Profile("dev")
+@Profile("test")
 public class TestDBConfig {
 
 	@Bean

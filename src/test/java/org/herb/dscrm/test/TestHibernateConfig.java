@@ -24,11 +24,10 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
  *
  */
 @Configuration
-@Profile("dev")
-@PropertySource("classpath:application-dev.properties")
+@Profile("test")
+@PropertySource("classpath:application-test.properties")
 public class TestHibernateConfig {
 
-//	private final String dialect = "org.hibernate.dialect.HSQLDialect";
 	@Resource
 	Environment env;
 
