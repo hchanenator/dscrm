@@ -22,40 +22,40 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class HeroController {
-	
+
 	@Autowired
 	HeroService heroService;
-	
+
 	@RequestMapping("/showheroes")
 	public String list(Model model) {
 		model.addAttribute("heroesList", heroService.findAllHeroes());
 		return "heroes";
 	}
-	
-	@RequestMapping(value="/addnewhero", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/addnewhero", method = RequestMethod.GET)
 	public String getAddAHeroForm(Model model) {
 		Hero hero = new Hero();
 		model.addAttribute("newHero", hero);
 		return "addhero";
 	}
-	
-	@RequestMapping(value="/addnewhero", method=RequestMethod.POST)
-	public String processAddAHero(@ModelAttribute("newHero") Hero hero, BindingResult result, HttpServletRequest request) {
-		
+
+	@RequestMapping(value = "/addnewhero", method = RequestMethod.POST)
+	public String processAddAHero(@ModelAttribute("newHero") Hero hero, BindingResult result,
+			HttpServletRequest request) {
+
 		if (result.hasErrors()) {
 			return "addhero";
 		}
-		
+
 		heroService.addHero(hero);
-		
+
 		return "redirect:showheroes";
 	}
-	
-	@RequestMapping(value="/deletehero", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/deletehero", method = RequestMethod.GET)
 	public String processDeleteHero(Model model, @RequestParam("heroID") String heroId) {
 		heroService.deleteHeroById(Long.parseLong(heroId));
 		return "redirect:showheroes";
 	}
-	
 
 }
