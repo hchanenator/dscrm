@@ -25,13 +25,13 @@
 	<section class="container">
 	<h2>Heroes</h2>
 	<div class="jumbotron">
-		<form:form modelAttribute="newHero" class="form-horizontal"
-			enctype="multipart/form-data">
+		<form:form modelAttribute="newHero" class="form-horizontal">
 			<fieldset>
 				<legend>Add a new Hero!</legend>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="firstName">First Name: </label>
+					<label class="control-label col-lg-2 col-lg-2" for="firstName">First
+						Name: </label>
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
 							<form:input id="firstName" path="firstName" type="text"
@@ -41,7 +41,8 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="lastName">Last Name: </label>
+					<label class="control-label col-lg-2 col-lg-2" for="lastName">Last
+						Name: </label>
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
 							<form:input id="lastName" path="lastName" type="text"
@@ -51,7 +52,8 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="alterEgo">Alias: </label>
+					<label class="control-label col-lg-2 col-lg-2" for="alterEgo">Alias:
+					</label>
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
 							<form:input id="alterEgo" path="alias" type="text"
@@ -59,14 +61,15 @@
 						</div>
 					</div>
 				</div>
+				<div class="form-group">
+					<div class="col-lg-offset-2 col-lg-10">
+						<input type="submit" id="btnAdd" class="btn btn-primary"
+							value="Add">
+					</div>
+				</div>
 
 			</fieldset>
 		</form:form>
-	</div>
-	<div class="form-group">
-		<div class="col-lg-offset-2 col-lg-10">
-			<input type="submit" id="btnAdd" class="btn btn-primary" value="Add">
-		</div>
 	</div>
 	</section>
 
