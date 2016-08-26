@@ -3,6 +3,8 @@
  */
 package org.herb.dscrm;
 
+import static org.junit.Assert.*;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -72,6 +74,7 @@ public class HeroControllerTest {
 		
 		mockMvc.perform(get("/addnewhero")).andExpect(view().name("addhero"));
 	}
+	
 	
 	public void testAddingAHero() throws Exception {
 		Hero someHero = new Hero("Natasha", "Romanoff", "Black Widow");

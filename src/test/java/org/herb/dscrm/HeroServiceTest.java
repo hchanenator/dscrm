@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { DSCRM.class })
-public class ServiceTest {
+public class HeroServiceTest {
 
 	@Autowired
 	HeroService heroService;
@@ -63,4 +63,22 @@ public class ServiceTest {
 		}
 	}
 
+	@Test
+	public void testDeleteHero() {
+		// First add the Hero
+		Hero lameHero = new Hero("Howard", "Duck", "Howie");
+		heroService.addHero(lameHero);
+		
+		// Now get the Hero
+		lameHero = heroService.findHeroByAlias("Howie");
+		
+		// First test that the Hero is there
+		assertNotNull(lameHero);
+		
+		// Now delete the poor shmuck!
+		heroService.deleteHeroById(lameHero.getHeroId());
+		
+		// And test that the Hero is NOT there
+		assertNull(heroService.findHeroByAlias("Howie"));
+	}
 }

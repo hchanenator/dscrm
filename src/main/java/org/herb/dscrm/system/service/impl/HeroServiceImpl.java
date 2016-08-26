@@ -30,7 +30,7 @@ public class HeroServiceImpl implements HeroService {
 	public List<Hero> findAllHeroes() {
 		List<Hero> heroList = heroRepository.findAll();
 		
-		System.out.println("******** Hero List Size ******:  " + heroList.size());
+//		System.out.println("******** Hero List Size ******:  " + heroList.size());
 		
 		return heroList;
 	}
@@ -56,6 +56,12 @@ public class HeroServiceImpl implements HeroService {
 	@Transactional
 	public void addHero(Hero hero) {
 		heroRepository.save(hero);
+		
+	}
+
+	@Override
+	public void deleteHeroById(Long id) {
+		heroRepository.delete(id);
 		
 	}
 	

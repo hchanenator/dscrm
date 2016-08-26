@@ -16,4 +16,5 @@ public interface HeroService {
 	Hero findHeroByLastName(String lastName);
 	Hero findHeroByAlias(String alias);
 	void addHero(Hero hero);
+	void deleteHeroById(Long id);
 }
