@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.herb.dscrm.test;
+package org.herb.dscrm.test.config;
 
 import javax.sql.DataSource;
 

@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +64,21 @@ public class HeroControllerTest {
 				.andExpect(model().attributeExists("heroesList"))
 				.andExpect(model().attribute("heroesList", Matchers.hasItems(heroes.toArray())));
 		
+	}
+	
+	@Test
+	public void testAddHeroPage() throws Exception {
+		MockMvc mockMvc = standaloneSetup(heroController).build();
+		
+		mockMvc.perform(get("/addnewhero")).andExpect(view().name("addhero"));
+	}
+	
+	public void testAddingAHero() throws Exception {
+		Hero someHero = new Hero("Natasha", "Romanoff", "Black Widow");
+		
+		MockMvc mockMvc = standaloneSetup(heroController).setSingleView(new InternalResourceView("/WEB-INF/view/addhero.jsp")).build();
+		
+		mockMvc.perform(post("/addhero")).andExpect(view().name("showheroes"));
 	}
 
 	private List<Hero> createHeroesList() {

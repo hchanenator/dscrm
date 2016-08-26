@@ -10,9 +10,9 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.herb.dscrm.test.TestHibernateConfig;
 import org.herb.dscrm.domain.entity.Hero;
 import org.herb.dscrm.system.persistence.api.HeroRepository;
+import org.herb.dscrm.test.config.TestHibernateConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

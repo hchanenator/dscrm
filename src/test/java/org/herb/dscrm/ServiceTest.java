@@ -51,7 +51,7 @@ public class ServiceTest {
 		heroes.add(new Hero("Steve", "Rogers", "Captain America"));
 		heroes.add(new Hero("Tony", "Stark", "Iron Man"));
 		heroes.add(new Hero("Bruce", "Banner", "Hulk"));
-		heroes.add(new Hero("Natasha", "Romanov", "Black Widow"));
+		heroes.add(new Hero("Natasha", "Romanoff", "Black Widow"));
 		heroes.add(new Hero("Clark", "Kent", "Superman"));
 		heroes.add(new Hero("Bruce", "Wayne", "Batman"));
 
