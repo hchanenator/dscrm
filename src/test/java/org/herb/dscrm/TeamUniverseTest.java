@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.herb.dscrm.domain.entity.Location;
+import org.herb.dscrm.domain.entity.Universe;
 import org.herb.dscrm.domain.entity.Team;
 import org.herb.dscrm.test.config.TestHibernateConfig;
 import org.junit.Test;
@@ -27,7 +27,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { DSCRM.class })
 @ActiveProfiles("test")
-public class TeamLocationTest {
+public class TeamUniverseTest {
 
 	@Autowired
 	DataSource dataSource;
@@ -35,7 +35,7 @@ public class TeamLocationTest {
 	@Autowired
 	TestHibernateConfig hibernateConfig;
 
-	private Location[] universes = new Location[2];
+	private Universe[] universes = new Universe[2];
 	private List<Team> teams = new ArrayList<>();
 
 	@Test
@@ -64,8 +64,8 @@ public class TeamLocationTest {
 	}
 
 	private void makeLocations() {
-		universes[0] = new Location("Marvel");
-		universes[1] = new Location("DC");
+		universes[0] = new Universe("Marvel");
+		universes[1] = new Universe("DC");
 	}
 
 	private void makeTeams() {

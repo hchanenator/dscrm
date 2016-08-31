@@ -27,7 +27,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={DSCRM.class})
 @ActiveProfiles("test")
-public class PersistenceTest {
+public class HeroRepositoryTest {
 	
 	private final List<Hero> heroes = new ArrayList<>();
 	

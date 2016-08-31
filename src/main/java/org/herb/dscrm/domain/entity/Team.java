@@ -35,9 +35,9 @@ public class Team implements Serializable {
 	@Column(name="team_name")
 	private String teamName;
 	
-	@ManyToOne(targetEntity=Location.class)
+	@ManyToOne(targetEntity=Universe.class)
 	@JoinColumn(name="location_Id")
-	private Location location;
+	private Universe location;
 
 	/**
 	 * 
@@ -58,7 +58,7 @@ public class Team implements Serializable {
 	 * @param teamName
 	 * @param location
 	 */
-	public Team(String teamName, Location location) {
+	public Team(String teamName, Universe location) {
 		this.teamName = teamName;
 		this.location = location;
 	}
@@ -96,14 +96,14 @@ public class Team implements Serializable {
 	/**
 	 * @return the location
 	 */
-	public Location getLocation() {
+	public Universe getLocation() {
 		return location;
 	}
 
 	/**
 	 * @param location the location to set
 	 */
-	public void setLocation(Location location) {
+	public void setLocation(Universe location) {
 		this.location = location;
 	}
 

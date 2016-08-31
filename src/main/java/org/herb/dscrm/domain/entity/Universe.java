@@ -21,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="LOCATION")
-public class Location implements Serializable {
+public class Universe implements Serializable {
 
 	/**
 	 * 
@@ -42,14 +42,14 @@ public class Location implements Serializable {
 	/**
 	 * 
 	 */
-	public Location() {	}
+	public Universe() {	}
 	
 	
 
 	/**
 	 * @param locationName
 	 */
-	public Location(String locationName) {
+	public Universe(String locationName) {
 		this.locationName = locationName;
 	}
 
@@ -121,7 +121,7 @@ public class Location implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Location other = (Location) obj;
+		Universe other = (Universe) obj;
 		if (locationId == null) {
 			if (other.locationId != null)
 				return false;
