@@ -26,6 +26,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.mock.web.MockServletContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -40,6 +41,7 @@ import org.springframework.web.servlet.view.InternalResourceView;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={DSCRM.class})
 @EnableWebMvc
+@ActiveProfiles("test")
 public class HomeControllerTest {
 	
 	private static Logger logger = LoggerFactory.getLogger(HomeControllerTest.class);

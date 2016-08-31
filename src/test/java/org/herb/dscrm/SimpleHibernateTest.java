@@ -6,11 +6,13 @@ package org.herb.dscrm;
 import org.herb.dscrm.domain.entity.Hero;
 import org.herb.dscrm.system.util.HibernateUtil;
 import org.hibernate.Session;
+import org.springframework.test.context.ActiveProfiles;
 
 /**
  * @author herb
  *
  */
+@ActiveProfiles("test")
 public class SimpleHibernateTest {
 
 	/**
