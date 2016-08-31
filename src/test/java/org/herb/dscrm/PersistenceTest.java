@@ -67,13 +67,13 @@ public class PersistenceTest {
 		assertTrue(count > 0);
 	}
 	
-//	@Test
+	@Test
 	public void testFindHeroByAlias() {
 		Hero hero = heroRepository.findByAlias("Spiderman");
 		assertEquals("Spiderman", hero.getAlias());
 	}
 	
-//	@Test
+	@Test
 	public void testFindAllEmployees() {
 		makeHeroes();
 		saveHeroes();
@@ -92,6 +92,7 @@ public class PersistenceTest {
 		heroes.add(new Hero("Natasha", "Romanov", "Black Widow"));
 		heroes.add(new Hero("Clark", "Kent", "Superman"));
 		heroes.add(new Hero("Bruce", "Wayne", "Batman"));
+		heroes.add(new Hero("Peter", "Parker", "Spiderman"));
 		
 	}
 	
