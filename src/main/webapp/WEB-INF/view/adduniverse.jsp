@@ -9,15 +9,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Hero</title>
+<title>Universe</title>
 </head>
 <body>
 
 	<section>
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Hero</h1>
-			<p>Add a Hero!</p>
+			<h1>Universe</h1>
+			<p>Add a Universe</p>
 		</div>
 	</div>
 	</section>
@@ -25,42 +25,21 @@
 	<section class="container">
 	<h2>Heroes</h2>
 	<div class="jumbotron">
-		<form:form modelAttribute="newHero" class="form-horizontal">
+		<form:form modelAttribute="newUniverse" class="form-horizontal">
 			<fieldset>
-				<legend>Add a new Hero!</legend>
+				<legend>Add a new Universe!</legend>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="firstName">First
+					<label class="control-label col-lg-2 col-lg-2" for="locationName">Universe
 						Name: </label>
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
-							<form:input id="firstName" path="firstName" type="text"
+							<form:input id="locationName" path="locationName" type="text"
 								class="form:input-large" />
 						</div>
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="lastName">Last
-						Name: </label>
-					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:input id="lastName" path="lastName" type="text"
-								class="form:input-large" />
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="alterEgo">Alias:
-					</label>
-					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:input id="alterEgo" path="alias" type="text"
-								class="form:input-large" />
-						</div>
-					</div>
-				</div>
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
 						<input type="submit" id="btnAdd" class="btn btn-primary"

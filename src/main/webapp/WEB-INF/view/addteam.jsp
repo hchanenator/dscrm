@@ -17,7 +17,7 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h1>Hero</h1>
-			<p>Add a Hero!</p>
+			<p>Add a Hero</p>
 		</div>
 	</div>
 	</section>

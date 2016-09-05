@@ -41,7 +41,7 @@ public class HeroControllerTest {
 
 	@Autowired
 	HeroController heroController;
-	
+
 	@Autowired
 	HeroRepository heroRepository;
 
@@ -51,7 +51,7 @@ public class HeroControllerTest {
 
 		mockMVC.perform(get("/showheroes")).andExpect(view().name("heroes"));
 	}
-	
+
 	@Test
 	public void testShowHeroesPage() throws Exception {
 		List<Hero> heroes = createHeroesList();
@@ -67,23 +67,28 @@ public class HeroControllerTest {
 		mockMvc.perform(get("/showheroes")).andExpect(view().name("heroes"))
 				.andExpect(model().attributeExists("heroesList"))
 				.andExpect(model().attribute("heroesList", Matchers.hasItems(heroes.toArray())));
-		
+
 	}
-	
+
 	@Test
 	public void testAddHeroPage() throws Exception {
 		MockMvc mockMvc = standaloneSetup(heroController).build();
-		
+
 		mockMvc.perform(get("/addnewhero")).andExpect(view().name("addhero"));
 	}
-	
-	
+
+	@Test
 	public void testAddingAHero() throws Exception {
-		Hero someHero = new Hero("Natasha", "Romanoff", "Black Widow");
-		
-		MockMvc mockMvc = standaloneSetup(heroController).setSingleView(new InternalResourceView("/WEB-INF/view/addhero.jsp")).build();
-		
-		mockMvc.perform(post("/addhero")).andExpect(view().name("showheroes"));
+//		Hero someHero = new Hero("Natasha", "Romanoff", "Black Widow");
+
+		MockMvc mockMvc = standaloneSetup(heroController)
+				.setSingleView(new InternalResourceView("/WEB-INF/view/addhero.jsp")).build();
+
+		mockMvc.perform(post("/addnewhero").sessionAttr("newHero", new Hero())
+				.param("firstName", "Natasha")
+				.param("lastName", "Romanoff")
+				.param("alterEgo", "Black Widow"))
+		.andExpect(view().name("redirect:showheroes"));
 	}
 
 	private List<Hero> createHeroesList() {
@@ -98,7 +103,7 @@ public class HeroControllerTest {
 
 		return heroes;
 	}
-	
+
 	private void saveHeroesList(List<Hero> heroes) {
 		for (Hero hero : heroes) {
 			heroRepository.save(hero);
